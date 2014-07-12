@@ -94,10 +94,13 @@ class AdminController extends Controller
 			} else $profile->validate();
 		}
 
-		$this->render('create',array(
-			'model'=>$model,
-			'profile'=>$profile,
-		));
+//		$this->render('create',array(
+//			'model'=>$model,
+//			'profile'=>$profile,
+//		));
+                $this->renderPartial('create', array(
+                    'model'=>$model, 'profile'=>$profile,
+		),false,true);
 	}
 
 	/**

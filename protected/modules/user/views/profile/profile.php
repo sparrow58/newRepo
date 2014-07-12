@@ -7,6 +7,7 @@ $this->menu=array(
 		?array('label'=>UserModule::t('Manage Users'), 'url'=>array('/user/admin'))
 		:array()),
     array('label'=>UserModule::t('List User'), 'url'=>array('/user')),
+    array('label'=>UserModule::t('Upload Cv'), 'url'=>array('/Cv/create')),
     array('label'=>UserModule::t('Edit'), 'url'=>array('edit')),
     array('label'=>UserModule::t('Change password'), 'url'=>array('changepassword')),
     array('label'=>UserModule::t('Logout'), 'url'=>array('/user/logout')),
@@ -54,3 +55,15 @@ $this->menu=array(
     	<td><?php echo CHtml::encode(User::itemAlias("UserStatus",$model->status)); ?></td>
 	</tr>
 </table>
+
+
+<?php
+echo CHtml::ajaxLink(yii::t('Dialog','Create User'),
+        $this->createUrl('admin/create'),array(
+   'onclick'=>'$("#userDialog").dialog("open"); return false;',
+   'update'=>'#userDialog'
+    ),array('id'=>'showUserDialog'));
+
+echo '<div id="userDialog"></div>';
+echo '<div id="message"></div>';
+ 

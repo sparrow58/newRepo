@@ -65,8 +65,29 @@
 		}
 ?>
 	<div class="row buttons">
-		<?php echo CHtml::submitButton($model->isNewRecord ? UserModule::t('Create') : UserModule::t('Save')); ?>
-	</div>
+		
+	<?php 
+           echo CHtml::ajaxSubmitButton($model->isNewRecord ? 'Create' : 'Save',
+                        CHtml::normalizeUrl(array('admin/create','render'=>false)),
+                        array('success'=>'js: function(data)
+                            {
+                                
+                            }'
+                            ,'error'=>'js:function()
+                                {
+                                $("#message").html("<strong>form submitted successfully.</strong>");
+                                $("#userDialog").dialog("close");
+                                
+                                }'
+                            ,'complete'=>'js:function()
+                                {
+                                
+                                }')
+                   ,array('id'=>'closeUserDialog'));
+                  Yii::app()->user->setFlash('success', '<strong>Uploaded Successful.</strong> ');
+           ?>
+        
+        </div>
 
 <?php $this->endWidget(); ?>
 

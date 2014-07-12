@@ -12,6 +12,27 @@ $this->menu=array(
 ?>
 <h1><?php echo UserModule::t("Create User"); ?></h1>
 
+
 <?php
-	echo $this->renderPartial('_form', array('model'=>$model,'profile'=>$profile));
+$this->beginWidget('zii.widgets.jui.CJuiDialog',array(
+                'id'=>'userDialog',
+                'options'=>array(
+                    'title'=>Yii::t('user','Create user'),
+                    'autoOpen'=>true,
+                    'show'=>array(
+                        'effect'=>'blind',
+                        'duration'=>500,
+                     ),
+                    'modal'=>'true',
+                    'width'=>'30%',
+                    'height'=>'auto',
+                ),
+                ));
+
+	echo $this->renderPartial('_form', array('model'=>$model,'profile'=>$profile));?>
+<?php $this->endWidget('zii.widgets.jui.CJuiDialog');?>
+
+
+<?php
+	//echo $this->renderPartial('_form', array('model'=>$model,'profile'=>$profile));
 ?>
