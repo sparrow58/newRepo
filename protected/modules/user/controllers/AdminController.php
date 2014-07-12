@@ -94,6 +94,7 @@ class AdminController extends Controller
 			} else $profile->validate();
 		}
 
+                //if ajax is disappled
 //		$this->render('create',array(
 //			'model'=>$model,
 //			'profile'=>$profile,

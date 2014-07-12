@@ -77,7 +77,7 @@ class CvController extends Controller
                 $model->Doc_File = CUploadedFile::getInstance($model, 'Doc_File');
                 $model->Doc_Type = $model->Doc_File->getType();
                 $model->Doc_Size = $model->Doc_File->getSize();
-				$model->Users_ID = $UserID;
+		$model->Users_ID = $UserID;
             }
             if ($model->save()) {
                         $model->Doc_File->saveAs($path . '/' . $CurrentTime . '_' . str_replace(' ', '_', strtolower($model->Doc_File)));
